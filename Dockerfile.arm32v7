@@ -1,8 +1,8 @@
-# build ONNXRuntime, please see the latest official information from here https://github.com/microsoft/onnxruntime/tree/master/dockerfiles
+# build ONNXRuntime, please see the latest official information from https://github.com/microsoft/onnxruntime/tree/master/dockerfiles
 FROM arm32v7/fedora:34
 ADD . /code
 
-RUN /code/dockerfiles/scripts/install_fedora_arm32.sh
+RUN /code/scripts/install_fedora_arm32.sh
 RUN cd /code && ./build.sh --skip_submodule_sync --config Release --build_wheel --update --build --parallel --cmake_extra_defines ONNXRUNTIME_VERSION=$(cat ./VERSION_NUMBER)
 
 FROM arm64v8/centos:7
